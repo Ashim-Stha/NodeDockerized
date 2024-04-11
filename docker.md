@@ -20,4 +20,7 @@
 ### changes in container file dont reflect on local files (read only)
 docker run -v ${pwd}:/app:ro -v /app/node_modules -p 4000:3000 -d --name okay nodeapp
 
+### to override default env
+docker run -v ${pwd}:/app -v /app/node_modules -d --env PORT=4000 -p 3000:4000 --name okay nodeapp
+
 docker logs cont_name
