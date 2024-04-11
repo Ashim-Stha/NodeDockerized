@@ -20,7 +20,20 @@
 ### changes in container file dont reflect on local files (read only)
 docker run -v ${pwd}:/app:ro -v /app/node_modules -p 4000:3000 -d --name okay nodeapp
 
-### to override default env
+### to override default env 
 docker run -v ${pwd}:/app -v /app/node_modules -d --env PORT=4000 -p 3000:4000 --name okay nodeapp
 
+### to use env file
+docker run -v ${pwd}:/app:ro -v /app/node_modules --env-file ./.env -p 4000:5000 -d --name okay nodeapp
+
 docker logs cont_name
+
+docker volume ls
+docker volume prune
+docker rm cont_name -fv
+
+docker-compose up -d
+docker-compose down -v
+
+to rebuild image so to reflect changes
+docker-compose up -d --build
