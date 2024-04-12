@@ -44,3 +44,10 @@ docker-compose -f docker-compose.yml -f docker-compose.dev.yml down -v
 
 ### dont delete volume for db to store persistent data
 docker-compose -f docker-compose.yml -f docker-compose.dev.yml down
+
+docker logs fcc-docker-nodeapp-1
+docker logs fcc-docker-nodeapp-1 -f
+
+docker network ls
+docker network inspect fcc-docker_default
+docker inspect fcc-docker-nodeapp-1
