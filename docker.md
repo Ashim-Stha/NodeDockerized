@@ -51,3 +51,6 @@ docker logs fcc-docker-nodeapp-1 -f
 docker network ls
 docker network inspect fcc-docker_default
 docker inspect fcc-docker-nodeapp-1
+
+docker-compose -f docker-compose.yml -f docker-compose.dev.yml up -d nodeapp
+ docker-compose -f docker-compose.yml -f docker-compose.dev.yml up -d --no-deps nodeapp

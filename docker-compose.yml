@@ -7,6 +7,8 @@ services:
       - "3000:3000"
     environment:
       - PORT=3000
+    depends_on:
+      - mongo  # starts container only after mongo container is started
   
   mongo:
     image: mongo:latest

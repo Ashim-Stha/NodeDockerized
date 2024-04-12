@@ -9,10 +9,18 @@ const {
 } = require("./config/config");
 
 const mongoUrl = `mongodb://${MONGO_USER}:${MONGO_PASSWORD}@${MONGO_IP}:${MONGO_PORT}/?authSource=admin`;
-mongoose
-  .connect(mongoUrl)
-  .then(() => console.log("connected"))
-  .catch((e) => console.log(e));
+
+const connectWithRetry = () => {
+  mongoose
+    .connect(mongoUrl)
+    .then(() => console.log("connected"))
+    .catch((e) => {
+      console.log(e);
+      setTimeout(connectWithRetry, 5000);
+    });
+};
+
+connectWithRetry();
 
 app.get("/", (req, res) => {
   res.send("<h2> Okay mddlllllmkkkkmcdddkkk</h2>");
