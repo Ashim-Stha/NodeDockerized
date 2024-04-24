@@ -1,6 +1,7 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const app = express();
+const cors = require("cors");
 
 const redis = require("redis");
 const session = require("express-session");
@@ -80,6 +81,7 @@ connectWithRetry();
 // );
 
 app.enable("trust proxy");
+app.use(cors());
 app.use(
   session({
     store: new RedisStore({ client: redisClient }),
@@ -96,8 +98,9 @@ app.use(
 
 app.use(express.json());
 
-app.get("/", (req, res) => {
+app.get("/api/v1", (req, res) => {
   res.send("<h2> Okay mddlllllmkkkkmcdddkkk</h2>");
+  console.log("rannnn");
 });
 
 app.use("/api/v1/posts", postRoute);

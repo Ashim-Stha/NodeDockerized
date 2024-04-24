@@ -54,3 +54,13 @@ docker inspect fcc-docker-nodeapp-1
 
 docker-compose -f docker-compose.yml -f docker-compose.dev.yml up -d nodeapp
  docker-compose -f docker-compose.yml -f docker-compose.dev.yml up -d --no-deps nodeapp
+
+### to scale
+docker-compose -f docker-compose.yml -f docker-compose.dev.yml up -d --scale nodeapp=2
+
+
+docker-compose logs service_name
+
+docker image tag old_name new_name
+
+docker push repo_name
